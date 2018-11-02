@@ -5,9 +5,12 @@
   "author": "Jeff Bocala (https://github.com/jeffbocala)",
   "license": "MIT",
   "scripts": {
-    "commit": "sgc"
+    "commit": "sgc",
+    "release": "release-it"
   },
   "devDependencies": {
+    "conventional-changelog": "^3.0.5",
+    "release-it": "^7.6.2",
     "semantic-git-commit-cli": "^3.1.0"
   }
 }
