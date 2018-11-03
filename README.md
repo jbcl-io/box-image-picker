@@ -62,7 +62,7 @@ $ yarn build
 
 or you can watch for changes using:
 ```bash
-$ yarn watch
+$ yarn dev
 ```
 
 After `git add`-ing commit your changes using:
