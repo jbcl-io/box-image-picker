@@ -11,13 +11,15 @@ export default class BoxImagePicker {
     Selector: string;
     Options = {
         hide_select: true,
-        box_size: 200
+        box_size: 150,
+        spacing: 5,
+        border_size: 5,
     };
     
     SelectElement: HTMLSelectElement;
     ParentElement: HTMLElement;
 
-    SelectedIndex: number;
+    SelectedIndex: number = 0;
 
 
     /**
@@ -42,12 +44,14 @@ export default class BoxImagePicker {
             defaultOptions;
         
         this.BuildBoxes();
+        this.UpdateSelected();
     }
 
 
     BuildBoxes = () => {
         this.ParentElement = document.createElement('div');
         this.ParentElement.id = `boximagepicker-${uniqueId()}`;
+        this.ParentElement.className = 'boximagepicker';
 
         this.appendAfter(this.ParentElement, this.SelectElement);
 
@@ -70,11 +74,14 @@ export default class BoxImagePicker {
 
 
     BuildSingleBox = ($option: HTMLElement, index: number): HTMLElement => {
+        let $container = document.createElement('div');
+        $container.className = 'boximagepicker__box-container';
+
         let $box = document.createElement('div');
-        $box.className = 'boximagepicker__box';
-        $box.style.backgroundImage = `url(${$option.getAttribute('data-img-src')})`;
+        $box.className = 'boximagepicker__box-container__box';
         $box.style.width = `${this.Options.box_size}px`;
         $box.style.height = `${this.Options.box_size}px`;
+        $box.style.padding = `${this.Options.spacing}px`;
 
         $box.addEventListener('click', () => {
             this.SelectedIndex = index;
@@ -82,20 +89,34 @@ export default class BoxImagePicker {
             this.UpdateSelected();
         });
 
-        return $box;
+        let $imagecontainer = document.createElement('div');
+        $imagecontainer.className = 'boximagepicker__box-container__box__image-container';
+        $imagecontainer.style.borderWidth = `${this.Options.border_size}px`;
+
+        let $image = document.createElement('div');
+        $image.className = 'boximagepicker__box-container__box__image-container__image';
+        $image.style.backgroundImage = `url(${$option.getAttribute('data-img-src')})`;
+        $image.style.width = `${this.Options.box_size-(this.Options.spacing*2)-(this.Options.border_size*2)}px`;
+        $image.style.height = `${this.Options.box_size-(this.Options.spacing*2)-(this.Options.border_size*2)}px`;
+
+        $imagecontainer.appendChild($image);
+        $box.appendChild($imagecontainer);
+        $container.appendChild($box);
+
+        return $container;
     }
 
 
     UpdateSelected = (): void => {
         // First, clear any selected boxes
-        let $boxes = this.ParentElement.querySelectorAll('.boximagepicker__box');
+        let $boxes = this.ParentElement.querySelectorAll('.boximagepicker__box-container__box');
 
         each($boxes, ($box) => {
-            $box.classList.remove('boximagepicker__box--selected');
+            $box.classList.remove('boximagepicker__box-container__box--selected');
         });
 
         // Now mark the correct one as "selected"
-        $boxes[this.SelectedIndex].classList.add('boximagepicker__box--selected');
+        $boxes[this.SelectedIndex].classList.add('boximagepicker__box-container__box--selected');
     }
 
 

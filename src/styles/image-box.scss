@@ -1,0 +1,31 @@
+.boximagepicker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    &__box-container {
+        flex: 0;
+        
+        &__box {
+            box-sizing: border-box;
+            cursor: pointer;
+
+            &--selected {
+                .boximagepicker__box-container__box__image-container {
+                    border-color: #1669ff;
+                }
+            }
+
+            &__image-container {
+                border-radius: 3px;
+                border-style: solid;
+                border-color: transparent;
+
+                &__image {
+                    background-position: center;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+}

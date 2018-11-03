@@ -9,16 +9,18 @@
     <script src="../dist/box-image-picker.js"></script>
 </head>
 <body>
-    <select id="singleSelect">
-        <option value="kitten1" data-img-src="http://placekitten.com/220/200">Kitten 1</option>
-        <option value="kitten2" data-img-src="http://placekitten.com/220/200">Kitten 2</option>
-        <option value="kitten3" data-img-src="http://placekitten.com/220/200">Kitten 3</option>
-        <option value="kitten4" data-img-src="http://placekitten.com/220/200">Kitten 4</option>
-    </select>
-    <script>
-        var singleSelect = new BoxImagePicker('#singleSelect', {
-            hide_select: false
-        });
-    </script>
+    <div>
+        <select id="singleSelect">
+            <option value="kitten1" data-img-src="http://placekitten.com/200/200">Kitten 1</option>
+            <option value="kitten2" data-img-src="http://placekitten.com/200/200">Kitten 2</option>
+            <option value="kitten3" data-img-src="http://placekitten.com/200/200">Kitten 3</option>
+            <option value="kitten4" data-img-src="http://placekitten.com/200/200">Kitten 4</option>
+        </select>
+        <script>
+            var singleSelect = new BoxImagePicker('#singleSelect', {
+                hide_select: false
+            });
+        </script>
+    </div>
 </body>
 </html>
