@@ -1,6 +1,8 @@
 # box-image-picker
 
-*Turn a simple `<select>` element into an Image Picker 🖼*
+*Turn a simple `<select>` element into an Image Picker* 🖼
+
+![Box Image Picker Example](https://imgur.com/S90ChU4.png)
 
 ## Installation
 
