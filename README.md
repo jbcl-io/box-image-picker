@@ -69,3 +69,10 @@ $ yarn commit
 ```
 
 **DO NOT USE** `git commit`.
+
+## Credit
+
+Thanks for inspiration : https://github.com/rvera/image-picker
+
+Built with ❤️ by [Jeff Bocala](https://jeffbocala.com)
+
