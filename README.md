@@ -1,4 +1,6 @@
-# box-image-picker
+# Box Image Picker
+
+[![release](https://img.shields.io/github/release/jeffbocala/box-image-picker.svg)](https://github.com/jeffbocala/box-image-picker/releases)
 
 *Turn a simple `<select>` element into an Image Picker* 🖼
 
@@ -25,7 +27,7 @@ In your HTML file add your `<select>` element:
 </select>
 ```
 
-And then in your JS file, run:
+And then in your JS file, add:
 ```javascript
 var imagepicker = new BoxImagePicker('#imagepicker', {
     // options
