@@ -8,18 +8,18 @@ import {
 
 export default class BoxImagePicker {
 
-    Selector: string;
-    Options = {
+    private Selector: string;
+    private Options = {
         hide_select: true,
         box_size: 150,
         spacing: 5,
         border_size: 5,
     };
     
-    SelectElement: HTMLSelectElement;
-    ParentElement: HTMLElement;
+    private SelectElement: HTMLSelectElement;
+    private ParentElement: HTMLElement;
 
-    SelectedIndex: number = 0;
+    private SelectedIndex: number = 0;
 
 
     /**
@@ -48,7 +48,7 @@ export default class BoxImagePicker {
     }
 
 
-    BuildBoxes = () => {
+    private BuildBoxes = () => {
         this.ParentElement = document.createElement('div');
         this.ParentElement.id = `boximagepicker-${uniqueId()}`;
         this.ParentElement.className = 'boximagepicker';
@@ -73,7 +73,7 @@ export default class BoxImagePicker {
     }
 
 
-    BuildSingleBox = ($option: HTMLElement, index: number): HTMLElement => {
+    private BuildSingleBox = ($option: HTMLElement, index: number): HTMLElement => {
         let $container = document.createElement('div');
         $container.className = 'boximagepicker__box-container';
 
@@ -107,7 +107,7 @@ export default class BoxImagePicker {
     }
 
 
-    UpdateSelected = (): void => {
+    private UpdateSelected = (): void => {
         // First, clear any selected boxes
         let $boxes = this.ParentElement.querySelectorAll('.boximagepicker__box-container__box');
 
@@ -125,6 +125,16 @@ export default class BoxImagePicker {
      */
     private appendAfter = (el: HTMLElement, referenceNode: HTMLElement) => {
         referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+    }
+
+
+    public getSelected = () => {
+        var res = {
+            index: this.SelectedIndex,
+            value: this.SelectElement.querySelectorAll('option')[this.SelectedIndex].value,
+        };
+
+        return res;
     }
     
 }
