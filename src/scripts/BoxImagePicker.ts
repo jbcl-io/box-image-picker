@@ -43,8 +43,15 @@ export default class BoxImagePicker {
             extend(defaultOptions, options) :
             defaultOptions;
         
+        this.SelectedIndex = this.getSelectedIndex();
+            
         this.BuildBoxes();
         this.UpdateSelected();
+    }
+
+
+    private getSelectedIndex = (): number => {
+        return this.SelectElement.selectedIndex;
     }
 
 
