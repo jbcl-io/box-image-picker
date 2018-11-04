@@ -1,6 +1,7 @@
 # Box Image Picker
 
 [![release](https://img.shields.io/github/release/jeffbocala/box-image-picker.svg)](https://github.com/jeffbocala/box-image-picker/releases)
+[![release](https://img.shields.io/github/license/jeffbocala/box-image-picker.svg)](https://github.com/jeffbocala/box-image-picker/blob/master/LICENSE)
 
 *Turn a simple `<select>` element into an Image Picker* 🖼
 
@@ -43,7 +44,16 @@ var imagepicker = new BoxImagePicker('#imagepicker', {
 | `spacing` | `5` | Padding in between the boxes. |
 | `border_size` | `5` | The border width of the selected box. |
 
+## Methods
+
+| Method | Arguments | Description |
+|---|---|---|
+| `getSelected` | `-` | Get the `index` and `value` of the selected image. |
+
+
 ## Development
+
+Feel free to implement anything from the roadmap, submit pull requests, create issues, discuss ideas or spread the word.
 
 Add Box Image Picker to your dev folder:
 ```bash
