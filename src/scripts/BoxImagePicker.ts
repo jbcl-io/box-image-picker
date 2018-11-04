@@ -21,6 +21,8 @@ export default class BoxImagePicker {
 
     private SelectedIndex: number = 0;
 
+    private emptyOptionIndex?: number;
+
 
     /**
      * Create a new BoxImagePicker
@@ -89,28 +91,41 @@ export default class BoxImagePicker {
         $box.style.width = `${this.Options.box_size}px`;
         $box.style.height = `${this.Options.box_size}px`;
         $box.style.padding = `${this.Options.spacing}px`;
+        
+        if ($option.getAttribute('value') == null) {
+            this.emptyOptionIndex = index;
+            $box.style.display = 'none';
+        } else {
+            $box.addEventListener('click', () => this.onBoxClick(index));
+    
+            let $imagecontainer = document.createElement('div');
+            $imagecontainer.className = 'boximagepicker__box-container__box__image-container';
+            $imagecontainer.style.borderWidth = `${this.Options.border_size}px`;
+    
+            let $image = document.createElement('div');
+            $image.className = 'boximagepicker__box-container__box__image-container__image';
+            $image.style.backgroundImage = `url(${$option.getAttribute('data-img-src')})`;
+            $image.style.width = `${this.Options.box_size-(this.Options.spacing*2)-(this.Options.border_size*2)}px`;
+            $image.style.height = `${this.Options.box_size-(this.Options.spacing*2)-(this.Options.border_size*2)}px`;
+    
+            $imagecontainer.appendChild($image);
+            $box.appendChild($imagecontainer);
+        }
 
-        $box.addEventListener('click', () => {
-            this.SelectedIndex = index;
-            this.SelectElement.selectedIndex = index;
-            this.UpdateSelected();
-        });
-
-        let $imagecontainer = document.createElement('div');
-        $imagecontainer.className = 'boximagepicker__box-container__box__image-container';
-        $imagecontainer.style.borderWidth = `${this.Options.border_size}px`;
-
-        let $image = document.createElement('div');
-        $image.className = 'boximagepicker__box-container__box__image-container__image';
-        $image.style.backgroundImage = `url(${$option.getAttribute('data-img-src')})`;
-        $image.style.width = `${this.Options.box_size-(this.Options.spacing*2)-(this.Options.border_size*2)}px`;
-        $image.style.height = `${this.Options.box_size-(this.Options.spacing*2)-(this.Options.border_size*2)}px`;
-
-        $imagecontainer.appendChild($image);
-        $box.appendChild($imagecontainer);
         $container.appendChild($box);
 
         return $container;
+    }
+
+
+    private onBoxClick = (index: number): void => {
+        if (index === this.SelectedIndex && this.emptyOptionIndex !== undefined) {
+            index = this.emptyOptionIndex;
+        }
+        
+        this.SelectedIndex = index;
+        this.SelectElement.selectedIndex = index;
+        this.UpdateSelected();
     }
 
 
@@ -138,7 +153,7 @@ export default class BoxImagePicker {
     public getSelected = () => {
         var res = {
             index: this.SelectedIndex,
-            value: this.SelectElement.querySelectorAll('option')[this.SelectedIndex].value,
+            value: this.SelectElement.querySelectorAll('option')[this.SelectedIndex].getAttribute('value'),
         };
 
         return res;
