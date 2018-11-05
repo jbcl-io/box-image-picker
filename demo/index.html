@@ -9,7 +9,7 @@
     <script src="../dist/box-image-picker.js"></script>
 </head>
 <body>
-    <div>
+    <div style="max-width:800px">
         <select id="singleSelect">
             <option value="kitten1" data-img-src="http://placekitten.com/200/200">Kitten 1</option>
             <option value="kitten2" data-img-src="http://placekitten.com/200/200">Kitten 2</option>
@@ -18,7 +18,8 @@
         </select>
         <script>
             var singleSelect = new BoxImagePicker('#singleSelect', {
-                hide_select: false
+                hide_select: false,
+                grid_col: 4,
             });
         </script>
     </div>

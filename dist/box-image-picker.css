@@ -1,9 +1,8 @@
 .boximagepicker {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; }
+  flex-wrap: wrap; }
   .boximagepicker__box-container {
-    flex: 0; }
+    flex: 0 0 1; }
     .boximagepicker__box-container__box {
       box-sizing: border-box;
       cursor: pointer; }

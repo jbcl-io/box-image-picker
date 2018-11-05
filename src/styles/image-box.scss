@@ -1,11 +1,10 @@
 .boximagepicker {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
 
     &__box-container {
-        flex: 0;
-        
+        flex: 0 0 1;
+
         &__box {
             box-sizing: border-box;
             cursor: pointer;
