@@ -12,8 +12,8 @@
 Just add the js & css files
 
 ```html
-<link rel="stylesheet" href="dist/box-image-picker.css" />
-<script src="dist/box-image-picker.js"></script>
+<link rel="stylesheet" href="dist/box-image-picker.min.css" />
+<script src="dist/box-image-picker.min.js"></script>
 ```
 
 ## Usage
@@ -43,6 +43,7 @@ var imagepicker = new BoxImagePicker('#imagepicker', {
 | `grid_col` | `4` | The number of boxes in each row. |
 | `spacing` | `5` | Padding in between the boxes. |
 | `border_size` | `5` | The border width of the selected box. |
+| `onSelect` | `function(index, value) {}` | Add your own callback function when a box is selected. |
 
 ## Methods
 
