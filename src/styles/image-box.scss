@@ -16,9 +16,10 @@
             }
 
             &__image-container {
-                border-radius: 3px;
+                border-radius: 2px;
                 border-style: solid;
                 border-color: transparent;
+                transition: border-color 0.3s;
 
                 &__image {
                     background-position: center;

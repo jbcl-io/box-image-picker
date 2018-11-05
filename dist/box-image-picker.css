@@ -9,9 +9,10 @@
       .boximagepicker__box-container__box--selected .boximagepicker__box-container__box__image-container {
         border-color: #1669ff; }
       .boximagepicker__box-container__box__image-container {
-        border-radius: 3px;
+        border-radius: 2px;
         border-style: solid;
-        border-color: transparent; }
+        border-color: transparent;
+        transition: border-color 0.3s; }
         .boximagepicker__box-container__box__image-container__image {
           background-position: center;
           background-size: cover; }
