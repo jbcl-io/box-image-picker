@@ -40,7 +40,7 @@ var imagepicker = new BoxImagePicker('#imagepicker', {
 | Option | Default | Description |
 |---|---|---|
 | `hide_select` | `true` | Hide the original `<select>` element. |
-| `box_size` | `150` | The width & height of each box. |
+| `grid_col` | `4` | The number of boxes in each row. |
 | `spacing` | `5` | Padding in between the boxes. |
 | `border_size` | `5` | The border width of the selected box. |
 
@@ -75,7 +75,7 @@ or you can watch for changes using:
 $ yarn dev
 ```
 
-After `git add`-ing commit your changes using:
+After `git add`-ing, commit your changes using:
 ```bash
 $ yarn commit
 ```
