@@ -14,6 +14,7 @@ export default class BoxImagePicker {
         grid_col: 4,
         spacing: 5,
         border_size: 5,
+        onSelect: function(index: number, value: string) {}
     };
 
     private SelectElement: HTMLSelectElement;
@@ -85,7 +86,7 @@ export default class BoxImagePicker {
 
         this.SelectElement.addEventListener('change', () => {
             this.SelectedIndex = this.SelectElement.selectedIndex;
-            this.UpdateSelected();
+            this.onChange();
         });
     }
 
@@ -129,7 +130,18 @@ export default class BoxImagePicker {
 
         this.SelectedIndex = index;
         this.SelectElement.selectedIndex = index;
+        this.onChange();
+    }
+
+
+    private onChange = (): void => {
         this.UpdateSelected();
+
+        // Trigger user's callback
+        if (typeof this.Options.onSelect == 'function') {
+            let res = this.getSelected();
+            this.Options.onSelect(res.index, res.value);
+        }
     }
 
 
