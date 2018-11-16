@@ -14,6 +14,7 @@ export default class BoxImagePicker {
         grid_col: 4,
         spacing: 5,
         border_size: 5,
+        show_label: false,
         onSelect: function(index: number, value: string) {}
     };
 
@@ -119,7 +120,29 @@ export default class BoxImagePicker {
 
         $container.appendChild($box);
 
+        if (this.Options.show_label) {
+            let $label = this.BuildBoxLabel($option.textContent);
+            $container.appendChild($label);
+        }
+
         return $container;
+    }
+
+
+    private BuildBoxLabel = (label: string): HTMLElement => {
+        let $labelContainer = document.createElement('div');
+        let $label = document.createElement('span');
+
+        $labelContainer.classList.add('boximagepicker__box-container__label');
+        $labelContainer.style.paddingLeft = `${this.Options.spacing*2}px`;
+        $labelContainer.style.paddingRight = `${this.Options.spacing*2}px`;
+        $labelContainer.style.paddingBottom = `${this.Options.spacing*2}px`;
+
+        $label.textContent = label;
+
+        $labelContainer.appendChild($label);
+
+        return $labelContainer;
     }
 
 
@@ -161,10 +184,20 @@ export default class BoxImagePicker {
     private UpdateBoxWidths = (): void => {
         let $boxes = this.ParentElement.querySelectorAll('.boximagepicker__box-container__box');
 
+        let column_width = this.ParentElement.clientWidth / this.Options.grid_col;
+
         each($boxes, ($box) => {
-            let column_width = this.ParentElement.clientWidth / this.Options.grid_col;
             ($box as HTMLElement).style.width = `${column_width}px`;
         });
+
+        // Update label max-width
+        if (this.Options.show_label) {
+            let $labels = this.ParentElement.querySelectorAll('.boximagepicker__box-container__label');
+
+            each($labels, ($label) => {
+                ($label as HTMLElement).style.width = `${column_width}px`;
+            });
+        }
     }
 
 

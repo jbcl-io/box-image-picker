@@ -16,3 +16,8 @@
         .boximagepicker__box-container__box__image-container__image {
           background-position: center;
           background-size: cover; }
+    .boximagepicker__box-container__label {
+      font-size: 0.85em;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; }
