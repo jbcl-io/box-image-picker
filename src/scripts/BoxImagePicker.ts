@@ -182,22 +182,13 @@ export default class BoxImagePicker {
 
 
     private UpdateBoxWidths = (): void => {
-        let $boxes = this.ParentElement.querySelectorAll('.boximagepicker__box-container__box');
+        let $boxes = this.ParentElement.querySelectorAll('.boximagepicker__box-container');
 
-        let column_width = this.ParentElement.clientWidth / this.Options.grid_col;
+        let column_width = 100 / this.Options.grid_col;
 
         each($boxes, ($box) => {
-            ($box as HTMLElement).style.width = `${column_width}px`;
+            ($box as HTMLElement).style.width = `${column_width}%`;
         });
-
-        // Update label max-width
-        if (this.Options.show_label) {
-            let $labels = this.ParentElement.querySelectorAll('.boximagepicker__box-container__label');
-
-            each($labels, ($label) => {
-                ($label as HTMLElement).style.width = `${column_width}px`;
-            });
-        }
     }
 
 
