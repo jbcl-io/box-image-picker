@@ -2,6 +2,7 @@
 
 [![release](https://img.shields.io/github/release/jeffbocala/box-image-picker.svg)](https://github.com/jeffbocala/box-image-picker/releases)
 [![release](https://img.shields.io/github/license/jeffbocala/box-image-picker.svg)](https://github.com/jeffbocala/box-image-picker/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/box-image-picker/latest.svg?colorB=cb3837)](https://www.npmjs.com/package/box-image-picker)
 
 *Turn a simple `<select>` element into an Image Picker* 🖼
 
@@ -43,6 +44,7 @@ var imagepicker = new BoxImagePicker('#imagepicker', {
 | `grid_col` | `4` | The number of boxes in each row. |
 | `spacing` | `5` | Padding in between the boxes. |
 | `border_size` | `5` | The border width of the selected box. |
+| `show_label` | `false` | Display the option label at the bottom of each box. |
 | `onSelect` | `function(index, value) {}` | Add your own callback function when a box is selected. |
 
 ## Methods
