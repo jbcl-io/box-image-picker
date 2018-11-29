@@ -2,6 +2,10 @@
     display: flex;
     flex-wrap: wrap;
 
+    &, * {
+        box-sizing: initial;
+    }
+
     &__box-container {
         flex: 0 0 1;
 
