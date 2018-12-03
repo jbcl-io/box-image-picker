@@ -44,6 +44,7 @@ var imagepicker = new BoxImagePicker('#imagepicker', {
 | `grid_col` | `4` | The number of boxes in each row. |
 | `spacing` | `5` | Padding in between the boxes. |
 | `border_size` | `5` | The border width of the selected box. |
+| `border_color` | `#1669ff` | The border color of the selected box. |
 | `show_label` | `false` | Display the option label at the bottom of each box. |
 | `onSelect` | `function(index, value) {}` | Add your own callback function when a box is selected. |
 
