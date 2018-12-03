@@ -8,18 +8,22 @@ import {
 
 export default class BoxImagePicker {
 
+    private id: string;
+
     private Selector: string;
     private Options = {
         hide_select: true,
         grid_col: 4,
         spacing: 5,
         border_size: 5,
+        border_color: '#1669ff',
         show_label: false,
         onSelect: function(index: number, value: string) {}
     };
 
     private SelectElement: HTMLSelectElement;
     private ParentElement: HTMLElement;
+    private Stylesheet: HTMLStyleElement;
 
     private SelectedIndex: number = 0;
 
@@ -28,13 +32,15 @@ export default class BoxImagePicker {
 
     /**
      * Create a new BoxImagePicker
-     * @param select_id Element query selector string
+     * @param selector Element query selector string
      * @param options Options to override the default options
      */
     constructor(selector: string, options?: object) {
         if (typeof selector != 'string') {
             throw new Error('Selector must be a string');
         }
+
+        this.id = uniqueId();
 
         this.Selector = selector;
 
@@ -48,6 +54,8 @@ export default class BoxImagePicker {
             defaultOptions;
 
         this.SelectedIndex = this.getSelectedIndex();
+
+        this.CreateStylesheet();
 
         this.BuildBoxes();
         this.UpdateSelected();
@@ -66,7 +74,7 @@ export default class BoxImagePicker {
 
     private BuildBoxes = () => {
         this.ParentElement = document.createElement('div');
-        this.ParentElement.id = `boximagepicker-${uniqueId()}`;
+        this.ParentElement.id = `boximagepicker-${this.id}`;
         this.ParentElement.className = 'boximagepicker';
 
         this.appendAfter(this.ParentElement, this.SelectElement);
@@ -203,6 +211,21 @@ export default class BoxImagePicker {
             ($box.querySelector('.boximagepicker__box-container__box__image-container') as HTMLElement).style.height = `${imagecntr_height}px`;
             ($box.querySelector('.boximagepicker__box-container__box__image-container__image') as HTMLElement).style.height = `${imagecntr_height}px`;
         });
+    }
+
+
+    private CreateStylesheet = (): void => {
+        this.Stylesheet = document.createElement('style');
+        this.Stylesheet.type = 'text/css';
+
+        this.Stylesheet.appendChild(document.createTextNode(`
+            #boximagepicker-${this.id} .boximagepicker__box-container__box--selected .boximagepicker__box-container__box__image-container {
+                border-color: ${this.Options.border_color};
+            }
+        `));
+
+        let head = document.head || document.getElementsByTagName('head')[0];
+        head.appendChild(this.Stylesheet);
     }
 
 
