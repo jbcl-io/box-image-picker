@@ -3,7 +3,7 @@
     flex-wrap: wrap;
 
     &, * {
-        box-sizing: initial;
+        box-sizing: content-box;
     }
 
     &__box-container {

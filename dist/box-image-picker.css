@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap; }
   .boximagepicker, .boximagepicker * {
-    box-sizing: initial; }
+    box-sizing: content-box; }
   .boximagepicker__box-container {
     flex: 0 0 1; }
     .boximagepicker__box-container__box {
